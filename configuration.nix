@@ -16,6 +16,28 @@
   wsl.enable = true;
   wsl.defaultUser = "mir";
   
+  # Enable the Flakes feature and the accompanying new nix command-line tool
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
+  environment.systemPackages = with pkgs; [
+    # Flakes clones its dependencies through the git command,
+    # so git must be installed first
+    git
+    gh # GitHub CLI
+    micro
+    wget
+    curl
+  ];
+  # Set the default editor to vim
+  environment.variables.EDITOR = "micro";
+
+  programs.bash.shellAliases = {
+    ls = "ls -vla --color=auto --time-style=long-iso";
+    ll = "ls";
+    cls = "clear; ls";
+    "cd.." = "cd ..";
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
