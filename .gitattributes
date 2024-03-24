@@ -1,0 +1,43 @@
+# Set default behavior to automatically normalize line endings.
+*          text=auto
+
+# always use LF line endings so scripts will still work if accessed from Windows
+*.bash     text eol=lf
+*.fish     text eol=lf
+*.ksh      text eol=lf
+*.sh       text eol=lf
+*.zsh      text eol=lf
+
+
+
+## GitHub Linguist config
+
+*.md linguist-detectable
+*.md linguist-language=Markdown
+*.md -linguist-documentation
+
+*.org linguist-detectable
+*.org linguist-language=Org
+*.org -linguist-documentation
+
+flake.lock linguist-generated
+
+
+
+# Other options
+
+# Should we encrypt flake.lock??
+# flake.lock filter=git-crypt diff=git-crypt
+
+# Text files where line endings should be preserved
+*.patch    -text
+*.diff     -text
+
+# Exclude files from exporting (you don't have the .git directory available, so they become pretty useless)
+.gitattributes export-ignore
+.gitignore     export-ignore
+.gitkeep       export-ignore
+
+# Just in case, never filter git files
+.gitattributes !filter !diff
+.gitignore !filter !diff
