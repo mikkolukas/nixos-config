@@ -8,12 +8,12 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        inputs.nixos-wsl.nixosModules.wsl
+        nixos-wsl.nixosModules.wsl
         
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
