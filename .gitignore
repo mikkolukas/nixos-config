@@ -3,3 +3,6 @@ result
 
 # Running `nixos-rebuild build-vm` and starting the VM adds a file for the virtual storage drive.
 *.qcow2
+
+# Ignoring everything Jetbrains, as this is not a Jetbrains-bound project
+.idea
