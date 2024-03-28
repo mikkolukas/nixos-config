@@ -10,17 +10,18 @@
 {
   wsl.enable = true;
   wsl.defaultUser = "mir";
-  
+
   networking.hostName = "wsl";
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command,
     # so git must be installed first
     git
     gh # GitHub CLI
+    jj
     micro
     wget
     curl
