@@ -21,7 +21,7 @@
     # so git must be installed first
     git
     gh # GitHub CLI
-    jj
+    jujutsu
     micro
     wget
     curl
