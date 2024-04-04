@@ -5,7 +5,7 @@
     nixos-stable.url = github:nixos/nixpkgs/nixos-23.11;
     nixos-unstable.url = github:NixOS/nixpkgs/nixos-unstable;
 
-    nixos.follows = "nixos-unstable";
+    nixpkgs.follows = "nixos-unstable";
 
     # a collection of NixOS modules covering hardware quirks
     nixos-hardware.url = github:NixOS/nixos-hardware/master;
@@ -16,13 +16,12 @@
     hyprland.url = github:hyprwm/Hyprland;
 
     nixos-wsl.url = github:nix-community/NixOS-WSL;
-    nixos-wsl.inputs.nixpkgs.follows = "nixos";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixos, home-manager, nixos-wsl, ... }@inputs: {
-    # Please replace my-nixos with your hostname
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, ... }@inputs: {
     nixosConfigurations  = {
-      wsl = nixos.lib.nixosSystem {
+      wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           nixos-wsl.nixosModules.wsl
