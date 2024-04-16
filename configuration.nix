@@ -25,6 +25,8 @@
     micro
     wget
     curl
+    php83
+    php83Packages.composer
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "micro";
